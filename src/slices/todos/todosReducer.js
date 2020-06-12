@@ -1,40 +1,29 @@
 import initialState from '../../store/initialState';
 import { createSlice } from '@reduxjs/toolkit';
-import { setAutoFreeze, produce } from "immer";
-setAutoFreeze(false);
 
 const todosReducer = createSlice({
 	name: "todos",
 	initialState: initialState.todosReducer,
 	reducers: {
 		getTodosStart: (state, action) => (
-			produce(state, draft => {
-				draft.isLoading = true
-			})
+			state.isLoading = true
 		),
 		getTodosSuccess: (state, action) => (
-			produce(state, draft => {
-				draft.isLoading = false
-				draft.todos = action.payload.slice(0, 10)
-			})
+			state.isLoading = false,
+			state.todos = action.payload.slice(0, 10)
 		),
 		getTodosFailed: (state, action) => (
-			produce(state, draft => {
-				draft.isLoading = false
-				draft.isFailed = false
-			})
+			state.isLoading = false,
+			state.isFailed = false
 		),
-		toggleTodoCompleted: (state, action) => (
-			produce(state, draft => {
-				let todoIndex = draft.todos.findIndex((todo => todo.id === action.payload))
-				if(draft.todos[todoIndex].completed){
-					draft.todos[todoIndex].completed = false
-				}else{
-					draft.todos[todoIndex].completed = true
-				}
-				
-			})
-		)
+		toggleTodoCompleted: (state, action) => {
+			let todoIndex = state.todos.findIndex((todo => todo.id === action.payload))
+			if(state.todos[todoIndex].completed){
+				state.todos[todoIndex].completed = false
+			}else{
+				state.todos[todoIndex].completed = true
+			}
+		}
 	}
 })
 
