@@ -7,6 +7,8 @@
 - Redux Toolkit
 - ImmerJS
 
-Documentation: https://redux-toolkit.js.org/
+Documentation: <a href="https://redux-toolkit.js.org/">https://redux-toolkit.js.org/</a>
 
-by <a href="https://www.linkedin.com/in/daniele-carta-lugano/?locale=it_IT">Daniele Carta</a>
+<hr />
+
+<a href="https://www.linkedin.com/in/daniele-carta-lugano/">Follow me in LinkedIn</a>
